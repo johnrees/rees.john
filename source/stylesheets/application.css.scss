@@ -1,0 +1,208 @@
+@import "jquery.tweet";
+@import "supersized";
+// @import "susy";
+
+// $total-columns  : 12;             // a 12-column grid
+// $column-width   : 4em;            // each column is 4em wide
+// $gutter-width   : 1em;            // 1em gutters between columns
+// $grid-padding   : $gutter-width;  // grid-padding equal to gutters
+
+// .page {
+//   // page acts as a container for our grid.
+//   @include container;
+
+//   // header and footer are full-width by default.
+//   header, footer { clear: both; }
+
+//   // nav spans 3 columns of total 12.
+//   nav { @include span-columns(3,12); }
+
+//   .content {
+//     // content spans the final (omega) 9 columns of 12.
+//     @include span-columns(9 omega,12);
+
+//     // main content spans 6 of those 9 columns.
+//     .main { @include span-columns(6,9); }
+
+//     // secondary content spans the final 3 (omega) of 9 columns.
+//     .secondary { @include span-columns(3 omega,9); }
+//   }
+// }
+
+.sprite {
+    text-indent: -100px;
+
+display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:image-url('sprite.png');}
+
+.facebook {width:32px; height:32px; background-position: -70px -113px}
+.flickr {width:32px; height:32px; background-position: -36px -113px}
+.github {width:32px; height:32px; background-position: -2px -113px}
+#johnrees {width:93px; height:75px; background-position: -2px -2px}
+.last-fm {width:32px; height:32px; background-position: -70px -79px}
+.skype {width:32px; height:32px; background-position: -36px -79px}
+.twitter {width:32px; height:32px; background-position: -2px -79px}
+
+ul.links {
+  list-style: none;
+  li {
+    display: inline;
+  }
+}
+
+.container {
+  overflow: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul.pacman {
+li {
+  list-style-image: image-url('bullet.png');
+  padding-left: 0px;
+  margin-left: 30px;
+  margin-bottom: 0.5em;
+  color: #FEFEFE;
+}
+}
+.page {
+  width: 882px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+body {
+  // background: #000 url('/images/iaac.jpg') center center;
+  // background-size: cover;
+  color: #AAA;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding-bottom: 30px;
+}
+
+.hero {
+    font-size: 80px;
+  letter-spacing: -3px;
+  border-bottom: 1px solid #666;
+  padding: 20px 0 20px;
+  margin-bottom: 20px;
+  line-height: 0.8em;
+}
+
+#disqus_thread {
+    border-top: 1px solid #666;
+    padding-top: 20px;
+
+}
+
+.hero, h2 {
+  color: #FEFEFE;
+  font-family: "proxima-nova-alt-condensed",sans-serif;
+  font-weight: bold;
+  // font-family: 'Gotham Black', sans-serif;
+  text-transform: uppercase;
+  display: block;
+
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 25px;
+  span {
+    margin-bottom: -5px;
+  }
+}
+
+#bees, .about {
+  float: left;
+  width: 250px;
+}
+
+.about {
+  margin-left: 20px;
+  width: 600px;
+}
+
+#johnrees {
+  display: block;
+  float: left;
+  // background: url('/images/johnrees.png');
+  margin-top: 10px;
+}
+
+header {
+  border-bottom: 1px solid #666;
+  overflow: hidden;
+  line-height: 100px;
+  height: 100px;
+  letter-spacing: 0.1em;
+
+  font-family: "proxima-nova-alt-condensed",sans-serif;
+  font-weight: 100;
+
+  ul {
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+    float: right;
+    text-transform: uppercase;
+    font-size: 14px;
+    li {
+      float: left;
+      display: block;
+      margin-left: 20px;
+    }
+    list-style: none;
+  }
+
+}
+
+#main {
+  overflow: hidden;
+}
+
+.blurb {
+  padding-bottom: 20px;
+  line-height: 1.2em;
+  font-size: 1.2em;
+}
+
+  a {
+    color: #FFF;
+    text-decoration: none;
+  }
+
+.box {
+  text-indent: -999px;
+
+  font-family: "proxima-nova-alt-condensed",sans-serif;
+    // font-family: 'Gotham Black', sans-serif;
+  text-transform: uppercase;
+  font-size: 25px;
+  background: #444 image-url('pacman.png');
+  width: 290px;
+  height: 218px;
+  margin: 2px;
+  height: 200px;
+  float: left;
+  text-align: center;
+  a {
+    padding-top: 80px;
+    line-height: 100%;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+img {
+  float: left;
+}
+.about {
+  float: left;
+  padding-left: 10px;
+}
+
+p {
+  margin-bottom: 1em;
+}

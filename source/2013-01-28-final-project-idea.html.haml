@@ -1,0 +1,99 @@
+---
+title: "Week 1"
+title2: "Final Project Proposal -"
+title3: "<i>Analogue <span style='color: #FFFF30;'>PAC-MAN</span></i>"
+bg: pac.png
+---
+
+%p{style: 'font-size: 1.3em'}
+  For the first week on the Fab Academy we had to decide what we should do for our final project. Being a huge fan of classic arcade games, I would like to propose building an analogue version of
+  %b PAC-MAN.
+  What I mean by this is lifting the game from the screen, and fabricating a physical 3D version of it, that can be controlled with a joystick.
+%p Whilst the desired outcome is fairly predictable, I think that the process will be an excellent challenge for myself, as in order to build a working system I will have to learn and employ many new skills that could then be used to invent new games, or modes of interaction/play with physical objects.
+
+%p I'm yet to meet anyone who hasn't seen the game before (please let me know if you haven't, I'd genuinely like to know!) but in the spirit of comprehensiveness I will do my best to briefly explain the rules -
+
+.row{style: 'overflow: hidden;'}
+
+  .game{style: 'float: right; width: 300px'}
+    %object{:data => "pacman.swf", :height => "400", :type => "application/x-shockwave-flash", :width => "280"}
+      %param{:name => "movie", :value => "pacman.swf"}/
+      %param{:name => "quality", :value => "high"}/
+
+  .description{style: 'float: left; width: 550px; margin-top: 40px;'}
+    %h2 Game Rules
+
+
+    %p
+      %ul.pacman
+        %li You control the protagonist 'PAC-MAN', a yellow, chomping mouth
+        %li Your objective is to eat all of the pellets inside a maze, without being caught by one of the ghosts
+        %li There are special 'power-pellets' that you can eat which will turn the ghosts blue and makes them edible for a short time
+
+    %p That's the basic gist of things, if you want more details on the history or the rules of the game there is a wikipedia article - #{link_to "http://en.wikipedia.org/wiki/Pac-Man", "http://en.wikipedia.org/wiki/Pac-Man"}
+
+    %p{style: 'font-style: italic'}
+      If you can't see the game on the right, there is an open-source HTML5 version #{link_to "here", "http://arandomurl.com/2010/07/25/html5-pacman.html"}. I didn't embed it on this page because of the filesize but you can also fork or download the code for yourself at the #{link_to "github repository", "https://github.com/daleharvey/pacman"}.
+
+%h2 Creating the maze
+
+%p
+  Although my knowledge is very limited at this stage I think that the game-board would be a good candidate for laser cutting or milling out of wood or acrylic. The image below shows a simple layout based on the actual game. At this point it does not include ghosts for reasons that I will explain #{link_to "later in this post", "#ghosts"}.
+
+.row{style: 'overflow: hidden; margin-bottom: 20px;'}
+  = image_tag "board.png", style: 'float: left'
+
+  %ul{style: 'display: block; width: 400px; float: right'}
+    %li
+      %h2{style: 'color: #5757FF'} Walls
+      %p These limit PAC-MAN's and the ghosts' movement in the game. They are impenetrable, as I am suggesting that PAC-MAN should be on a track, (in the point below), their main purpose would be for aesthetic reasons. However, if PAC-MAN was not limited to a track then it would be important that they were raised in order to restrict his movement. I think they could be lit with EL-wire or by lighting the edges of acrylic.
+    %li
+      %h2{style: 'color: #FB0000'} Routed track
+      %p I think that the PAC-MAN figure should move on a fixed track. It can only move forwards, but can turn 90, 180 and 270 degrees in order to navigate corners.
+      %p One issue that I can already see occurring is when PAC-MAN goes off the side of the board; in the game he would re-enter on the opposite side of the board but that will be difficult to achieve with a physical figure.
+    %li
+      %h2{style: 'color: #3AFF61'} LED pellet holes
+      %p I'd like the pellets and power pellets to be LEDS, that switch off when PAC-MAN 'eats' them.
+
+%h2 Controlling PAC-MAN's Movement
+%p True to the original arcade game, I think that PAC-MAN should be controlled with a 4-directional joystick. I would like to further research the different options available but for now I think a reasonable approach would be to use small wheels. Below is a front cross-section view of how I envisage this working.
+
+.row{style: 'overflow: hidden; margin-bottom: 20px;'}
+  = image_tag "front.png", style: 'float: left'
+  %ul{style: 'display: block; width: 400px; float: right'}
+    %li
+      %h2{style: 'color: #FFFF39'} Head
+      %p This will be a hollow plastic sphere mounted on a transparent 3D-printed support so that it looks like it's hovering. If possible I'd like the mouth to open and close when PAC-MAN moves.
+    %li
+      %h2{style: 'color: #FB0000'} Wheels
+      %p There could be 4 wheels above the track and 4 below. The wheels above would just be for support, whilst the wheels below the board would be motorised and controlled by the joystick.
+    %li
+      %h2{style: 'color: #008720'} Motor
+      %p This will power PAC-MAN's movement but will be hidden from the player's view as it will be below the board.
+    %li
+      %h2{style: 'color: #636363'} Board
+      %p As the routed track will create 'islands', the board may require some supports that do not hinder the motion of the motor and wheels.
+
+%h2#ghosts Ghosts/Enemies
+
+%p As ghosts are inherently intangible, making their presence known in the game will be challenging. If you play the arcade game you'll soon notice that in some cases they might pass straight through each other.
+
+%p One way I thought this could be replicated with physical figures would be to make them use their own individual tracks, so that they could pass alongside one another freely. Another idea was to instead represent them with LEDs, that would be positioned next the pellet LEDS. I am still undecided on this matter although, given the choice, I'd much prefer that they were physical figures, like PAC-MAN.
+
+%p In order to chase PAC-MAN, they need to be aware of his position on the board. I have a little experience with A* path-finding algorithms which would be ideal for this situation, although it will require that the system is always aware of their, PAC-MAN's and all obstacle positions at all times.
+
+%h2 Final Thoughts
+%p
+  As you can probably tell from this post, as of now, the extent of my knowledge in the field of hardware design and fabrication is quite limited. However, in the coming weeks I am going to put a lot of effort into each module so that I can iterate and revise my plans. I truly can't wait to start making things!
+  %strong Let's do this!
+
+#disqus_thread
+:javascript
+  var disqus_shortname = 'johnsfabblog';
+  var disqus_identifier = 'proposal';
+  var disqus_developer = 0;
+  (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();

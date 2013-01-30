@@ -1,0 +1,40 @@
+.tweet,
+.query {
+}
+
+.tweets {
+    border-top: 1px solid #666;
+  padding-top: 10px;
+
+    margin: 10px 0;
+}
+
+  .tweet_list {
+    font-size: 14px;
+    overflow-y: hidden;
+    img {
+      display: none;
+    }
+  }
+
+    .tweet_list li {
+      overflow-y: auto;
+      overflow-x: hidden;
+      list-style-type: none;
+      margin-bottom: 1em;
+    }
+
+      .tweet_list li a {
+      }
+
+    .tweet_list .tweet_even {
+      // background-color: #91E5E7;
+    }
+
+    .tweet_list .tweet_avatar {
+      padding-right: .5em; float: left;
+    }
+
+      .tweet_list .tweet_avatar img {
+        vertical-align: middle;
+      }
