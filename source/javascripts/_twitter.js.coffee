@@ -1,10 +1,11 @@
 jQuery ->
 
+  $(".hero div").fitText(0.8, { minFontSize: '18px', maxFontSize: '80px' });
+
   $(".tweet").tweet
     username: "johnsthings"
-    join_text: "auto"
     avatar_size: 32
-    count: 3
+    count: 5
 
   $('.box').hover ->
     $(this).css('text-indent', 0)

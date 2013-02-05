@@ -1,18 +1,18 @@
 ---
   title: Fab Academy 2013
-  title2: "<i>@ FabLab, IAAC Barcelona</i>"
+  title2: "@ FabLab, IAAC Barcelona"
   bg: iaac.jpg
 ---
-.blurb
-  This is a log of all the work I'm doing on the 2013 Fab Academy course. You can use the images below to find blog entries for specific modules. More posts will be added each week.
-.container
+%p This is a log of all the work I'm doing on the 2013 Fab Academy course. You can use the images below to find blog entries for specific modules. More posts will be added each week.
+.boxes
   - blog.articles[0...10].each do |article|
-    .box
+    .box{ style: "background-image: url(images/#{article.data.cover})"}
       = link_to article.title, article.url
       %span= article.date.strftime('%b %e')
 
 .tweets
   %h2
     %span.sprite.twitter
-    Recent Tweets (from #{link_to "@johnsthings", "http://twitter.com/johnsthings"})
+    #{link_to "Recent Tweets", "http://twitter.com/johnsthings"}
+    %span.from (from #{link_to "@johnsthings", "http://twitter.com/johnsthings"})
   .tweet

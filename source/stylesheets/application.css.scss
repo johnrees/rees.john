@@ -1,109 +1,141 @@
 @import "jquery.tweet";
 @import "supersized";
-// @import "susy";
+@import "sprites";
+@import "grid";
+@import "susy";
 
-// $total-columns  : 12;             // a 12-column grid
-// $column-width   : 4em;            // each column is 4em wide
-// $gutter-width   : 1em;            // 1em gutters between columns
-// $grid-padding   : $gutter-width;  // grid-padding equal to gutters
+body {
+  background-color: #0F0F0F;
+  color: #AAA;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
 
-// .page {
-//   // page acts as a container for our grid.
-//   @include container;
+header {
+  border-bottom: 1px solid #666;
+  overflow: hidden;
+  line-height: 70px;
+  // height: 90px;
+  letter-spacing: 0.1em;
+  font-family: "proxima-nova-alt-condensed",sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 14px;
 
-//   // header and footer are full-width by default.
-//   header, footer { clear: both; }
+  ul {
+    font-family: "Quicksand", sans-serif;
+    overflow: hidden;
+    list-style: none;
+    float: right;
+    li {
+      float: left;
+      a {
+      display: block;
+      margin-left: 20px;
+      }
+    }
+  }
 
-//   // nav spans 3 columns of total 12.
-//   nav { @include span-columns(3,12); }
+}
 
-//   .content {
-//     // content spans the final (omega) 9 columns of 12.
-//     @include span-columns(9 omega,12);
+a {
+  color: #FEFEFE;
+  text-decoration: none;
+}
 
-//     // main content spans 6 of those 9 columns.
-//     .main { @include span-columns(6,9); }
+p {
+  margin: 0 0 1em;
+}
 
-//     // secondary content spans the final 3 (omega) of 9 columns.
-//     .secondary { @include span-columns(3 omega,9); }
+// ul.links {
+//   list-style: none;
+//   li {
+//     display: inline;
 //   }
 // }
 
-.sprite {
-    text-indent: -100px;
+// .container {
+//   overflow: hidden;
+// }
 
-display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:image-url('sprite.png');}
+// ul.pacman {
+// li {
+//   list-style-image: image-url('bullet.png');
+//   padding-left: 0px;
+//   margin-left: 30px;
+//   margin-bottom: 0.5em;
+//   color: #FEFEFE;
+// }
+// }
+// .page {
+//   width: 882px;
+//   margin: 0 auto;
+//   overflow: hidden;
+// }
 
-.facebook {width:32px; height:32px; background-position: -70px -113px}
-.flickr {width:32px; height:32px; background-position: -36px -113px}
-.github {width:32px; height:32px; background-position: -2px -113px}
-#johnrees {width:93px; height:75px; background-position: -2px -2px}
-.last-fm {width:32px; height:32px; background-position: -70px -79px}
-.skype {width:32px; height:32px; background-position: -36px -79px}
-.twitter {width:32px; height:32px; background-position: -2px -79px}
-
-ul.links {
-  list-style: none;
-  li {
+.from {
+  display: none;
+  @include at-breakpoint(40em) {
     display: inline;
   }
 }
 
-.container {
-  overflow: hidden;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-ul.pacman {
-li {
-  list-style-image: image-url('bullet.png');
-  padding-left: 0px;
-  margin-left: 30px;
-  margin-bottom: 0.5em;
-  color: #FEFEFE;
-}
-}
-.page {
-  width: 882px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-body {
-  // background: #000 url('/images/iaac.jpg') center center;
-  // background-size: cover;
-  color: #AAA;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  padding-bottom: 30px;
-}
-
 .hero {
-    font-size: 80px;
-  letter-spacing: -3px;
+  // font-size: 2em;
+  font-size: 1.8em;
+  letter-spacing: -0.05em;
   border-bottom: 1px solid #666;
   padding: 20px 0 20px;
   margin-bottom: 20px;
   line-height: 0.8em;
+  & > span {
+    display: block;
+  }
+  @include at-breakpoint(40em) {
+    font-size: 3.5em;
+    letter-spacing: -3px;
+  }
+  @include at-breakpoint(60em) {
+    font-size: 5em;
+    letter-spacing: -3px;
+  }
 }
 
-#disqus_thread {
-    border-top: 1px solid #666;
-    padding-top: 20px;
+// #disqus_thread {
+//     border-top: 1px solid #666;
+//     padding-top: 20px;
 
+// }
+
+ul.social {
+  list-style: none;
+  overflow: hidden;
+  &, li {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    float: left;
+    margin-right: 5px;
+  }
+}
+
+ul.tweet_list {
+  list-style: none;
+  &, li {
+    margin: 0;
+    padding: 0;
+  }
+  li {
+    margin-bottom: 1em;
+  }
 }
 
 .hero, h2 {
   color: #FEFEFE;
   font-family: "proxima-nova-alt-condensed",sans-serif;
   font-weight: bold;
-  // font-family: 'Gotham Black', sans-serif;
   text-transform: uppercase;
   display: block;
-
 }
 
 h2 {
@@ -114,75 +146,63 @@ h2 {
   }
 }
 
-#bees, .about {
-  float: left;
-  width: 250px;
+.boxes {
+  clear: both;
+  overflow: hidden;
 }
 
+#bees {
+  width: 100%;
+  margin-bottom: 1em;
+  @include at-breakpoint(30em) {
+    @include span-columns(3);
+  }
+}
 .about {
-  margin-left: 20px;
-  width: 600px;
+  @include at-breakpoint(30em) {
+    @include span-columns(3);
+  }
 }
 
 #johnrees {
   display: block;
   float: left;
   // background: url('/images/johnrees.png');
-  margin-top: 10px;
-}
-
-header {
-  border-bottom: 1px solid #666;
-  overflow: hidden;
-  line-height: 100px;
-  height: 100px;
-  letter-spacing: 0.1em;
-
-  font-family: "proxima-nova-alt-condensed",sans-serif;
-  font-weight: 100;
-
-  ul {
-    font-family: 'Quicksand', sans-serif;
-    overflow: hidden;
-    float: right;
-    text-transform: uppercase;
-    font-size: 14px;
-    li {
-      float: left;
-      display: block;
-      margin-left: 20px;
-    }
-    list-style: none;
-  }
-
+  margin: 10px 0 20px 0;
 }
 
 #main {
   overflow: hidden;
 }
 
-.blurb {
-  padding-bottom: 20px;
-  line-height: 1.2em;
-  font-size: 1.2em;
-}
+// .blurb {
+//   padding-bottom: 20px;
+//   line-height: 1.2em;
+//   font-size: 1.2em;
+// }
 
-  a {
-    color: #FFF;
-    text-decoration: none;
-  }
+//   a {
+//     color: #FFF;
+//     text-decoration: none;
+//   }
 
 .box {
+  margin: 2px;
   text-indent: -999px;
 
   font-family: "proxima-nova-alt-condensed",sans-serif;
     // font-family: 'Gotham Black', sans-serif;
   text-transform: uppercase;
   font-size: 25px;
-  background: #444 image-url('pacman.png');
-  width: 290px;
-  height: 218px;
-  margin: 2px;
+  background: #444 no-repeat center center;
+  background-size: cover;
+  // width: 290px;
+  clear: both;
+  @include span-columns(12);
+  @include at-breakpoint(50em) {
+    @include span-columns(3);
+    clear: none;
+  }
   height: 200px;
   float: left;
   text-align: center;
@@ -195,14 +215,14 @@ header {
   }
 }
 
-img {
-  float: left;
-}
-.about {
-  float: left;
-  padding-left: 10px;
-}
+// img {
+//   float: left;
+// }
+// .about {
+//   float: left;
+//   padding-left: 10px;
+// }
 
-p {
-  margin-bottom: 1em;
-}
+// p {
+//   margin-bottom: 1em;
+// }

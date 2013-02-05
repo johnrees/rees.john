@@ -1,0 +1,16 @@
+
+.sprite {
+  text-indent: -100px;
+  display:inline-block;
+  overflow:hidden;
+  background-repeat: no-repeat;
+  background-image:image-url('sprite.png');
+}
+
+.facebook {width:32px; height:32px; background-position: -70px -113px}
+.flickr {width:32px; height:32px; background-position: -36px -113px}
+.github {width:32px; height:32px; background-position: -2px -113px}
+#johnrees {width:93px; height:75px; background-position: -2px -2px}
+.last-fm {width:32px; height:32px; background-position: -70px -79px}
+.skype {width:32px; height:32px; background-position: -36px -79px}
+.twitter {width:32px; height:32px; background-position: -2px -79px}

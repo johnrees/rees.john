@@ -18,21 +18,19 @@
         });
       });
   %body
-    / %a{:href => "https://github.com/you"}
-    /   %img{:alt => "Fork me on GitHub", :src => "https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png", :style => "position: absolute; top: 0; right: 0; border: 0;"}/
     .page
+      / %a{:href => "https://github.com/you"}
+      /   %img{:alt => "Fork me on GitHub", :src => "https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png", :style => "position: absolute; top: 0; right: 0; border: 0;"}/
       %header
         = link_to "John Rees", '/index.html', :relative => true, id: "johnrees", class: 'sprite'
-        %ul
-          %li= link_to "Work Log", "index.html"
+        %ul.reset
+          %li= link_to "Work", "index.html"
           %li= link_to "About Me", "about.html"
           / %li= link_to "Calendar", "calendar.html"
 
-      #main{:role => "main"}
+      #main.content{:role => "main"}
         .hero
-          = current_page.data.title
-          %br/
-          = current_page.data.title2
-          %br/
-          = current_page.data.title3
+          %span= current_page.data.title
+          %span= current_page.data.title2
+          %span= current_page.data.title3
         = yield

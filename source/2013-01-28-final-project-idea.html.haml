@@ -3,6 +3,7 @@ title: "Week 1"
 title2: "Final Project Proposal -"
 title3: "<i>Analogue <span style='color: #FFFF30;'>PAC-MAN</span></i>"
 bg: pac.png
+cover: pacman.png
 ---
 
 %p{style: 'font-size: 1.3em'}
@@ -13,14 +14,14 @@ bg: pac.png
 
 %p I'm yet to meet anyone who hasn't seen the game before (please let me know if you haven't, I'd genuinely like to know!) but in the spirit of comprehensiveness I will do my best to briefly explain the rules -
 
-.row{style: 'overflow: hidden;'}
+.row
 
-  .game{style: 'float: right; width: 300px'}
+  .game
     %object{:data => "pacman.swf", :height => "400", :type => "application/x-shockwave-flash", :width => "280"}
       %param{:name => "movie", :value => "pacman.swf"}/
       %param{:name => "quality", :value => "high"}/
 
-  .description{style: 'float: left; width: 550px; margin-top: 40px;'}
+  .description
     %h2 Game Rules
 
 
@@ -40,10 +41,10 @@ bg: pac.png
 %p
   Although my knowledge is very limited at this stage I think that the game-board would be a good candidate for laser cutting or milling out of wood or acrylic. The image below shows a simple layout based on the actual game. At this point it does not include ghosts for reasons that I will explain #{link_to "later in this post", "#ghosts"}.
 
-.row{style: 'overflow: hidden; margin-bottom: 20px;'}
-  = image_tag "board.png", style: 'float: left'
+.row
+  = image_tag "board.png"
 
-  %ul{style: 'display: block; width: 400px; float: right'}
+  %ul
     %li
       %h2{style: 'color: #5757FF'} Walls
       %p These limit PAC-MAN's and the ghosts' movement in the game. They are impenetrable, as I am suggesting that PAC-MAN should be on a track, (in the point below), their main purpose would be for aesthetic reasons. However, if PAC-MAN was not limited to a track then it would be important that they were raised in order to restrict his movement. I think they could be lit with EL-wire or by lighting the edges of acrylic.
@@ -58,9 +59,9 @@ bg: pac.png
 %h2 Controlling PAC-MAN's Movement
 %p True to the original arcade game, I think that PAC-MAN should be controlled with a 4-directional joystick. I would like to further research the different options available but for now I think a reasonable approach would be to use small wheels. Below is a front cross-section view of how I envisage this working.
 
-.row{style: 'overflow: hidden; margin-bottom: 20px;'}
-  = image_tag "front.png", style: 'float: left'
-  %ul{style: 'display: block; width: 400px; float: right'}
+.row
+  = image_tag "front.png"
+  %ul
     %li
       %h2{style: 'color: #FFFF39'} Head
       %p This will be a hollow plastic sphere mounted on a transparent 3D-printed support so that it looks like it's hovering. If possible I'd like the mouth to open and close when PAC-MAN moves.
