@@ -4,6 +4,49 @@
 @import "grid";
 @import "susy";
 
+::selection {
+  background: #FFFF30;
+  color: #000;
+  }
+::-moz-selection {
+  background: #FFFF30;
+  color: #000;
+}
+
+.row {
+  overflow: hidden;
+  margin-bottom: 1em;
+  img {
+    float: none;
+    display: block;
+    clear: both;
+    margin: 0 0 1em 0;
+    width: 100%;
+  }
+  @include at-breakpoint(30em) {
+  img {
+    float: left;
+    margin-right: 10px;
+    max-width: 30%;
+  }
+  }
+
+  @include at-breakpoint(40em) {
+
+  img {
+    max-width: 40%;
+  }
+    
+  }
+
+  &:nth-child(odd) {
+    img {
+    float: right;
+    margin-left: 10px;
+    }
+  }
+}
+
 body {
   background-color: #0F0F0F;
   color: #AAA;
@@ -46,6 +89,16 @@ p {
   margin: 0 0 1em;
 }
 
+ul {
+  display: block;
+  margin: 0 0 0 20px;
+  padding: 0;
+  li {
+  margin: 0;
+  padding: 0;
+  }
+}
+
 // ul.links {
 //   list-style: none;
 //   li {
@@ -81,22 +134,26 @@ p {
 
 .hero {
   // font-size: 2em;
-  font-size: 1.8em;
-  letter-spacing: -0.05em;
+  font-size: 1.5em;
+  letter-spacing: -0.02em;
   border-bottom: 1px solid #666;
-  padding: 20px 0 20px;
+  padding: 10px 0 10px;
   margin-bottom: 20px;
-  line-height: 0.8em;
+  line-height: 0.9em;
   & > span {
     display: block;
   }
   @include at-breakpoint(40em) {
-    font-size: 3.5em;
+    font-size: 2.8em;
     letter-spacing: -3px;
+    line-height: 0.8em;
+  padding: 20px 0 20px;
   }
   @include at-breakpoint(60em) {
-    font-size: 5em;
+    font-size: 4.2em;
     letter-spacing: -3px;
+    line-height: 0.8em;
+  padding: 20px 0 20px;
   }
 }
 
@@ -130,7 +187,7 @@ ul.tweet_list {
   }
 }
 
-.hero, h2 {
+.hero, h2, h3 {
   color: #FEFEFE;
   font-family: "proxima-nova-alt-condensed",sans-serif;
   font-weight: bold;
@@ -138,9 +195,14 @@ ul.tweet_list {
   display: block;
 }
 
+
+li h2 {
+  border: none;
+}
 h2 {
   margin: 0 0 10px;
   font-size: 25px;
+  border-bottom: 1px solid #666;
   span {
     margin-bottom: -5px;
   }
@@ -188,7 +250,27 @@ h2 {
 
 .box {
   margin: 2px;
-  text-indent: -999px;
+  //text-indent: -3000px;
+  overflow: hidden;
+
+  &.over {
+  a {
+  line-height: 100%;
+  }
+    //text-indent: 0;
+    -webkit-filter: grayscale(0);
+    -webkit-filter: grayscale(0); -moz-filter: grayscale(0);
+    -ms-filter: grayscale(0); -o-filter: grayscale(0);
+    filter: none; filter: grayscale(0); 
+    //-webkit-transition: .2s all ease-in; -o-transition: .2s all ease-in;
+    //-moz-transition: .2s all ease-in; transition: .2s all ease-in;
+  }
+
+  -webkit-filter: grayscale(1);
+  -webkit-filter: grayscale(100%); -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%); -o-filter: grayscale(100%);
+  filter: url(desaturate.svg#greyscale);
+  filter: gray; filter: grayscale(100%); 
 
   font-family: "proxima-nova-alt-condensed",sans-serif;
     // font-family: 'Gotham Black', sans-serif;
@@ -208,7 +290,7 @@ h2 {
   text-align: center;
   a {
     padding-top: 80px;
-    line-height: 100%;
+    line-height: 800px;
     display: block;
     width: 100%;
     height: 100%;

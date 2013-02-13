@@ -9,54 +9,57 @@ cover: rhino.jpg
 %p{style: 'font-size: 1.3em'}
   This week we were tasked with fleshing out our final project ideas into 3D models. I experimented with several popular packages, including Google Sketchup, Blender and Tinkercad- but quickly realised the potential of the mighty Rhinoceros!
 
+
 %p After our weekly lecture from Neil, I felt inspired to play with some modelling software as soon as possible. I have (very limited) experience with Maya and 3DS Max but apart from that, this is all completely new to me.
+.row
+  = image_tag "tinkercad.png"
 
-= image_tag "tinkercad.png"
-
-%p Having followed various 'maker' blogs for the past few months, I was already aware of the existence of Tinkercad and had wanted an excuse to try it for some time. In no time at all I had designed a simple 3D PAC-MAN on a magnetic stand... in my browser! I loved the simplicity of the tool and the tutorials were excellent but while I can see how it might be excellent for some jobs, I did feel quite constrained by its simplicity, at least for what I was trying to achieve. Time to move on...
+  %p Having followed various 'maker' blogs for the past few months, I was already aware of the existence of Tinkercad and had wanted an excuse to try it for some time. In no time at all I had designed a simple 3D PAC-MAN on a magnetic stand... in my browser! I loved the simplicity of the tool and the tutorials were excellent but while I can see how it might be great for some small jobs, I did feel quite constrained by its simplicity, at least for what I was trying to achieve. Time to move on...
 
 
 %h2 Surprise Surprise!
-= image_tag "crash.png"
 
-%p I found a trial version of Rhino 5.0 (32-bit, Windows XP via VMWare Fusion) that had gave the user full functionality until their had been saved 25 times. Being a skinflint, for my first effort with Rhino I didn't actually press save until I'd spent about 45 minutes working with it. On doing so the app crashed and I lost everything. Whoops.
+.row
+  = image_tag "crash.png"
+
+  %p I found a trial version of Rhino 5.0 (32-bit, Windows XP via VMWare Fusion) that had gave the user full functionality until their had been saved 25 times. Being a skinflint, for my first effort with Rhino I didn't actually press save until I'd spent about 45 minutes working with it. On doing so the app crashed and I lost everything. Whoops.
 
 %h2 Illustrator
 
 %p It had taken me much longer than it usually would to draw simple 2D shapes in Rhino, although I am sure this was due to my lack of familiarity with the interface more than anything else. Anyway, after looking through some YouTube videos, I noticed that Rhino could easily import Adobe Illustrator .ai files. This was brilliant news for me as I'm already quite familiar with Adobe's products, so I was quickly able to mockup a vector version the basic game grid. The nice thing about the image below is that the underlying grid is exactly the same as the original game one.
 
-= image_tag "pacman-fills.png"
+.row
+  = image_tag "pacman-fills.png"
 
+  %ul
+    %li
+      %h2{style: 'color: #DF0216'} Track
+      %p
+        This is the range of PAC-MAN's movement in the game. Having done some more research I have adapted my original plans from moving him around with a motor and wheels to making him magnetic and moving a magnet around beneath the board.
+      %p
+        The
+        %span{style: 'color: #F99D1C'} orange
+        track shows how I plan on moving PAC-MAN from one side of the board to the other if he leaves the side of the maze.
+    %li
+      %h2{style: 'color: #FFF'} Pellets
+      %p These are the precise positions of the pellets in the game, they are centred their respective grid tile as they are in the arcade game. I am yet to determine how I will include ghosts on the board, but after a few technical conversations I'm about 90% sure that they will be represented by LEDs, alongside the pellet LEDs.
+    %li
+      %h2{style: 'color: #4455A5'} Walls
+      %p It wouldn't be PAC-MAN if our hero wasn't inexplicably trapped inside an unescapable labyrinth. I'd like the walls to be raised and - if possible - lit on the edges, to give an accurate representation of the arcade game aesthetic.
 
+.row
+  = image_tag "first-attempt.png"
 
-%ul
-  %li
-    %h2{style: 'color: #DF0216'} Track
-    %p
-      This is the range of PAC-MAN's movement in the game. Having done some more research I have adapted my original plans from moving him around with a motor and wheels to making him magnetic and moving a magnet around beneath the board.
-    %p
-      The
-      %span{style: 'color: #F18D00'} orange
-      track shows how I plan on moving PAC-MAN from one side of the board to the other if he leaves the side of the maze.
-  %li
-    %h2{style: 'color: #FFF'} Pellets
-    %p These are the precise positions of the pellets in the game, they are centred their respective grid tile as they are in the arcade game. I am yet to determine how I will include ghosts on the board, but after a few technical conversations I'm about 90% sure that they will be represented by LEDs, alongside the pellet LEDs.
-  %li
-    %h2{style: 'color: #333E9A'} Walls
-    %p It wouldn't be PAC-MAN if our hero wasn't inexplicably trapped inside an unescapable labyrinth. I'd like the walls to be raised and - if possible - lit on the edges, to give an accurate representation of the arcade game aesthetic.
-
-= image_tag "first-attempt.png"
-
-%p Second time round I made sure to use at least a couple of my allocated saves and I was really pleased with how quickly and easily I could get a basic representation of what was in my head onto the screen.
+  %p Second time round I made sure to use at least a couple of my allocated saves and I was really pleased with how quickly and easily I could get a basic representation of what was in my head onto the screen.
 
 
 
 %h2 Latest Designs
 
+%p This week's final efforts for the design include backlit life indicators, that will dim when PAC-MAN is caught by a ghost. A 4-way joystick for controlling our hero, and an LCD screen that will display the player's score. 
+
 = image_tag "front-view.png"
 = image_tag "side.png"
-
-%p This week's final efforts for the design include backlit life indicators, that will dim when PAC-MAN is caught by a ghost. A 4-way joystick for controlling our hero, and an LCD screen that will display the player's score. 
 
 %p In terms of software, I changed everything from my initial unstable install of Rhino. I'm now using Rhino 64-bit, on Windows 7 via Parallels. For now at least, everything seems much more stable. However, that could also be because I formatted my hard-drive and reinstalled OS X from scratch (something I, admittedly strangely, feel compelled to do about 3-4 times a year).
 

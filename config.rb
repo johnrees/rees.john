@@ -5,7 +5,7 @@
 
 activate :blog do |blog|
   # blog.prefix = "blog"
-  blog.permalink = ":year-:month-:day-:title.html"
+  blog.permalink = ":title.html"
   # blog.sources = ":year-:month-:day-:title.html"
   # blog.taglink = "tags/:tag.html"
   blog.layout = "layout"
@@ -81,6 +81,7 @@ set :js_dir, 'javascripts'
 
 set :relative_links, true
 set :images_dir, 'images'
+# set :build_dir, '../../academy.2013.sn.bcn/Web/rees.john'
 
 # Build-specific configuration
 configure :build do
@@ -91,7 +92,7 @@ configure :build do
   activate :minify_javascript
 
   # Enable cache buster
-  # activate :cache_buster
+  activate :cache_buster
 
   # Use relative URLs
   activate :relative_assets

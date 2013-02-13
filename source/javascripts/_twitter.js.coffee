@@ -8,6 +8,6 @@ jQuery ->
     count: 5
 
   $('.box').hover ->
-    $(this).css('text-indent', 0)
+    $(this).addClass('over')
   , ->
-    $(this).css('text-indent', '-999px')
+    $(this).removeClass('over')
