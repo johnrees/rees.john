@@ -2,6 +2,9 @@
 # Blog settings
 ###
 # Time.zone = "UTC"
+activate :syntax
+set :markdown_engine, :redcarpet
+set :markdown, :fenced_code_blocks => true, :smartypants => true
 
 activate :blog do |blog|
   # blog.prefix = "blog"

@@ -1,0 +1,201 @@
+---
+title: "Week 4"
+title2: "Electronics Production"
+title3: "<i>Fabricating the FAB-ISP</i>"
+bg: millingbg.jpg
+cover: fabispmini.jpg
+---
+
+%p{style: 'font-size: 1.3em'}
+  Our first week of electronics! This week we had to create a FabISP (Fab-able In-System Programmer) for our future circuits. A retail programmer might cost $30+ but ours will be roughly $5 in parts. Great stuff!
+
+.row
+  = image_tag "fabisp_cmp.png"
+  %p To begin, we had to choose a design for our board. Being a sucker for aesthetics I was very keen to work with #{link_to "Andy's", "http://fab.cba.mit.edu/content/projects/fabispkey/index.html"} layout, I love the simplicity of its integrated USB connection. I did download #{link_to "EagleCAD", "http://www.cadsoftusa.com/download-eagle/?language=en"} and the #{link_to "SparkFun","http://github.com/sparkfun/SparkFun-Eagle-Libraries"} libraries and followed #{link_to "this excellent tutorial", "http://www.sparkfun.com/tutorials/108"}. After a brief modification to the file, to personalise my board with my initials (on reflection this was probably a poor decision as the 'resolution' of the miller made the R look like an O, and the area I chose was extremely close to a diode, potentially weakening the solder joint), it was ready to be produced.
+
+.row
+  %p The board was milled and cut with the Roland Modela, via Fab Modules on Ubuntu. We were told it could be done in 10 minutes, but after being involved with making about 5 boards I think my record is closer to 15-20 minutes... I digress.
+  %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/pCFRcYl9HWw", :width => "420"}
+
+.row
+  = image_tag "extracting_fabisp.jpg"
+  %p I had a little trouble removing my  from the surface as the double-sided tape beneath it was very strong and I was concerned about snapping either the board or the blade. Later, I helped other people with their boards and it was much easier when I wasn't so liberal with the amount of tape!
+
+
+.row
+  %h2 Soldering
+  %p This was about the third time in my life I'd soldered anything. The first two times were a couple of LEDs in school, that used pins through the board, rather than surface-mount. Our tutor Luciano gave a nice brief introduction to the 'art' of soldering, and I found the following video very helpful -
+  %iframe{:allowfullscreen => "", :frameborder => "0", :height => "315", :src => "http://www.youtube.com/embed/I_NU2ruzyc4", :width => "420"}
+
+  = image_tag "clamped.jpg"
+  %p I definitely struggled at first. My eyesight isn't the best and my caffeine fueled hands are quite shaky at the best of times. However, now, after a couple of dozen joints I think I'm about 10x better than I was when I started. I think the key is to be patient, remember to breathe and use the solder sparingly. I really like surface-mount work and look forward to trying to create a circuit with the vinyl-cutter soon.
+
+.row
+.row
+  
+  = image_tag "multimeter.jpg"
+
+  %p I tested all of the connections I could, although I found that I couldn't test diodes with the multimeter (don't know if I was doing something wrong there).
+
+.row
+  %h2 Programming the ISP
+  = image_tag "greenlight.jpg"
+  %p After soldering it was time for the moment of truth, to check that our creation was able to be powered correctly. Red-light == fail, green-light == pass/joy. Thankfully in my case it was the latter. Although I had some sketchy jumpers, so had to handle the board quite delicately, at least in the programming stage.
+
+  %p I managed to program the board from both the commercial programmer and using another board that a classmate had built. The terminal output is shown below.
+
+  - code("bash") do
+    :plain
+      › sudo make fuse   
+
+      Password:
+      avrdude -c usbtiny -p attiny44  -U hfuse:w:0xDF:m -U lfuse:w:0xFF:m
+
+      avrdude: AVR device initialized and ready to accept instructions
+
+      Reading | ################################################## | 100% 0.00s
+
+      avrdude: Device signature = 0x1e9207
+      avrdude: reading input file "0xDF"
+      avrdude: writing hfuse (1 bytes):
+
+      Writing | ################################################## | 100% 0.00s
+
+      avrdude: 1 bytes of hfuse written
+      avrdude: verifying hfuse memory against 0xDF:
+      avrdude: load data hfuse data from input file 0xDF:
+      avrdude: input file 0xDF contains 1 bytes
+      avrdude: reading on-chip hfuse data:
+
+      Reading | ################################################## | 100% 0.00s
+
+      avrdude: verifying ...
+      avrdude: 1 bytes of hfuse verified
+      avrdude: reading input file "0xFF"
+      avrdude: writing lfuse (1 bytes):
+
+      Writing | ################################################## | 100% 0.00s
+
+      avrdude: 1 bytes of lfuse written
+      avrdude: verifying lfuse memory against 0xFF:
+      avrdude: load data lfuse data from input file 0xFF:
+      avrdude: input file 0xFF contains 1 bytes
+      avrdude: reading on-chip lfuse data:
+
+      Reading | ################################################## | 100% 0.00s
+
+      avrdude: verifying ...
+      avrdude: 1 bytes of lfuse verified
+
+      avrdude: safemode: Fuses OK
+
+      avrdude done.  Thank you.
+
+
+  - code("bash") do
+    :plain
+      › sudo make program
+
+      avrdude -c usbtiny -p attiny44  -U flash:w:main.hex:i
+
+      avrdude: AVR device initialized and ready to accept instructions
+
+      Reading | ################################################## | 100% 0.00s
+
+      avrdude: Device signature = 0x1e9207
+      avrdude: NOTE: FLASH memory has been specified, an erase cycle will be performed
+               To disable this feature, specify the -D option.
+      avrdude: erasing chip
+      avrdude: reading input file "main.hex"
+      avrdude: writing flash (2000 bytes):
+
+      Writing | ################################################## | 100% 2.59s
+
+
+
+      avrdude: 2000 bytes of flash written
+      avrdude: verifying flash memory against main.hex:
+      avrdude: load data flash data from input file main.hex:
+      avrdude: input file main.hex contains 2000 bytes
+      avrdude: reading on-chip flash data:
+
+      Reading | ################################################## | 100% 2.23s
+
+
+
+      avrdude: verifying ...
+      avrdude: 2000 bytes of flash verified
+
+      avrdude: safemode: Fuses OK
+
+      avrdude done.  Thank you.
+
+      avrdude -c usbtiny -p attiny44  -U hfuse:w:0xDF:m -U lfuse:w:0xFF:m
+
+      avrdude: AVR device initialized and ready to accept instructions
+
+      Reading | ################################################## | 100% 0.00s
+
+      avrdude: Device signature = 0x1e9207
+      avrdude: reading input file "0xDF"
+      avrdude: writing hfuse (1 bytes):
+
+      Writing | ################################################## | 100% 0.00s
+
+      avrdude: 1 bytes of hfuse written
+      avrdude: verifying hfuse memory against 0xDF:
+      avrdude: load data hfuse data from input file 0xDF:
+      avrdude: input file 0xDF contains 1 bytes
+      avrdude: reading on-chip hfuse data:
+
+      Reading | ################################################## | 100% 0.00s
+
+      avrdude: verifying ...
+      avrdude: 1 bytes of hfuse verified
+      avrdude: reading input file "0xFF"
+      avrdude: writing lfuse (1 bytes):
+
+      Writing | ################################################## | 100% 0.00s
+
+      avrdude: 1 bytes of lfuse written
+      avrdude: verifying lfuse memory against 0xFF:
+      avrdude: load data lfuse data from input file 0xFF:
+      avrdude: input file 0xFF contains 1 bytes
+      avrdude: reading on-chip lfuse data:
+
+      Reading | ################################################## | 100% 0.00s
+
+      avrdude: verifying ...
+      avrdude: 1 bytes of lfuse verified
+
+      avrdude: safemode: Fuses OK
+
+      avrdude done.  Thank you.
+
+  %hr/
+  %p I should note that whilst following the steps in #{link_to "this tutorial", "http://academy.cba.mit.edu/content/tutorials/05_Electronics_Production/Assemble_and_Program_FabISP.html"}, there were some problems issuing the commands `make hex` because the version of GCC I installed required strict `const` declarations in some of the source code. A quick find-and-replace for the offending lines later and everything was okay.
+
+  %p In addition to the above, if you're using a Mac, assuming you're using the package manager #{link_to "homebrew", "http://mxcl.github.com/homebrew/"} (you really should be if you're not already), you quickly and easily install the entire AVR toolchain, required for code compilation and communicating with devices on the USB port, with the #{link_to "hombrew-avr", "https://github.com/larsimmisch/homebrew-avr"} repository.
+  %hr/
+
+.row
+  = image_tag "fabisp.png"
+  %p I was able to program my board (and several others), using both OS X and Ubuntu 12.10. However, unlike the others mine was not being recognised as a FabISP in either OS. I figured there most be something wrong with a connection somewhere and after a few hours of frustration I finally caved and decided to start again, besides, it'll be good soldering practise, at least that's how I'm justifying it to myself...
+  
+.row
+  %h2 What now?
+  = image_tag "newboard.jpg"
+  %p So here is my new board design. There is a little more working room for installing the components, which will probably be helpful for me as a beginner. I will get it wired up and working ASAP, ready for our first project that will require its programming services.
+
+  %p As much as I was pulling my hair out at times this week, I really did enjoy working with electronics and I plan on getting my own soldering iron soon, along with some books to learn the basics with.
+
+#disqus_thread
+:javascript
+  var disqus_shortname = 'johnsfabblog';
+  var disqus_identifier = 'week4';
+  var disqus_developer = 0;
+  (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();

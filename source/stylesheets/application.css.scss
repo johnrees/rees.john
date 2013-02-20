@@ -3,6 +3,7 @@
 @import "sprites";
 @import "grid";
 @import "susy";
+@import "zenburn";
 
 ::selection {
   background: #FFFF30;
@@ -11,6 +12,11 @@
 ::-moz-selection {
   background: #FFFF30;
   color: #000;
+}
+
+hr {
+  border: none;
+  border-top: 1px dashed white;
 }
 
 .row {
@@ -282,7 +288,8 @@ h2 {
   clear: both;
   @include span-columns(12);
   @include at-breakpoint(50em) {
-    @include span-columns(3);
+    width: 210px;
+    // @include span-columns(5);
     clear: none;
   }
   height: 200px;
